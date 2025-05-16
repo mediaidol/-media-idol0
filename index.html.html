@@ -1,4 +1,891 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<!-- Full HTML content continues... -->
-</html>
+body {
+        font-family: 'Cairo', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        background-attachment: fixed;
+        color: var(--text-color);
+        direction: rtl;
+        line-height: 1.6;
+    }
+    
+    .container {
+        background-color: var(--card-bg);
+        border-radius: var(--border-radius);
+        box-shadow: var(--box-shadow);
+        margin: 30px auto;
+        max-width: 1100px;
+        overflow: hidden;
+    }
+    
+    header {
+        background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+        padding: 40px 20px;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.6;
+        z-index: 0;
+    }
+    
+    .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .logo {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, var(--secondary-color), #FFA500);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--accent-color);
+        font-weight: bold;
+        font-size: 24px;
+        border: 4px solid white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .logo::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(transparent, rgba(255, 255, 255, 0.3), transparent);
+        transform: rotate(45deg);
+        animation: shine 3s infinite;
+    }
+    
+    @keyframes shine {
+        0% { transform: translateX(-100%) rotate(45deg); }
+        100% { transform: translateX(100%) rotate(45deg); }
+    }
+    
+    header h1 {
+        font-size: 2.5rem;
+        margin: 10px 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        position: relative;
+        z-index: 1;
+    }
+    
+    header p {
+        font-size: 1.3rem;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .countdown-container {
+        background: rgba(0, 31, 63, 0.8);
+        border-radius: var(--border-radius);
+        padding: 20px;
+        margin: 20px auto 0;
+        max-width: 600px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .countdown-item {
+        margin: 0 15px;
+        text-align: center;
+        min-width: 80px;
+    }
+    
+    .countdown-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+        background: linear-gradient(135deg, var(--secondary-color), #FFA500);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    
+    .countdown-label {
+        font-size: 0.9rem;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 5px;
+    }
+    
+    section {
+        padding: 40px;
+        background-color: white;
+    }
+    
+    h2 {
+        color: var(--accent-color);
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--secondary-color);
+        font-size: 1.8rem;
+        position: relative;
+    }
+    
+    h2::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        right: 0;
+        width: 80px;
+        height: 2px;
+        background-color: var(--accent-color);
+    }
+    
+    p, li {
+        margin-bottom: 15px;
+        color: var(--text-color);
+        font-size: 1.05rem;
+    }
+    
+    .btn {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--secondary-color), #FFA500);
+        color: var(--accent-color);
+        padding: 14px 30px;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 16px;
+        margin: 15px 0;
+        box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .btn::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(transparent, rgba(255, 255, 255, 0.3), transparent);
+        transform: rotate(45deg);
+        transition: all 0.3s ease;
+        opacity: 0;
+    }
+    
+    .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(255, 215, 0, 0.4);
+    }
+    
+    .btn:hover::after {
+        animation: btn-shine 1s;
+    }
+    
+    @keyframes btn-shine {
+        0% { transform: translateX(-100%) rotate(45deg); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateX(100%) rotate(45deg); opacity: 0; }
+    }
+    
+    .sponsorship-types {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 25px;
+        margin: 30px 0;
+    }
+    
+    .sponsorship-card {
+        background-color: var(--light-bg);
+        border-radius: var(--border-radius);
+        padding: 30px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .sponsorship-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(to right, var(--secondary-color), #FFA500);
+    }
+    
+    .sponsorship-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sponsorship-card h3 {
+        color: var(--accent-color);
+        margin-bottom: 15px;
+        font-size: 1.5rem;
+    }
+    
+    .sponsorship-card .price {
+        font-size: 1.4rem;
+        font-weight: bold;
+        color: var(--accent-color);
+        margin: 15px 0;
+        background: linear-gradient(135deg, var(--accent-color), #0066cc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    .benefits {
+        list-style-type: none;
+        text-align: right;
+    }
+    
+    .benefits li {
+        margin-bottom: 12px;
+        position: relative;
+        padding-right: 25px;
+        font-size: 0.95rem;
+    }
+    
+    .benefits li:before {
+        content: "✓";
+        color: var(--secondary-color);
+        position: absolute;
+        right: 0;
+        font-weight: bold;
+    }
+    
+    form {
+        background-color: var(--light-bg);
+        padding: 30px;
+        border-radius: var(--border-radius);
+        margin-top: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    .form-group {
+        margin-bottom: 25px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: var(--accent-color);
+    }
+    
+    input, select, textarea {
+        width: 100%;
+        padding: 14px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-family: 'Cairo', sans-serif;
+        font-size: 16px;
+        transition: all 0.3s ease;
+    }
+    
+    input:focus, select:focus, textarea:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+        box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+    }
+    
+    .success-message {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px;
+        border-radius: var(--border-radius);
+        margin-bottom: 20px;
+        display: none;
+        box-shadow: 0 3px 10px rgba(76, 175, 80, 0.3);
+    }
+    
+    .error-message {
+        background-color: #f44336;
+        color: white;
+        padding: 15px;
+        border-radius: var(--border-radius);
+        margin-bottom: 20px;
+        display: none;
+        box-shadow: 0 3px 10px rgba(244, 67, 54, 0.3);
+    }
+    
+    .schedule {
+        margin: 30px 0;
+        background-color: var(--light-bg);
+        border-radius: var(--border-radius);
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .schedule-item {
+        display: flex;
+        margin-bottom: 20px;
+        align-items: center;
+        padding-bottom: 15px;
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+    }
+    
+    .schedule-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+    
+    .time {
+        min-width: 120px;
+        font-weight: bold;
+        color: var(--accent-color);
+        background-color: rgba(255, 215, 0, 0.2);
+        padding: 8px 15px;
+        border-radius: 50px;
+        text-align: center;
+        margin-left: 15px;
+    }
+    
+    .event-details {
+        flex-grow: 1;
+    }
+    
+    .event-details h4 {
+        margin: 0 0 5px 0;
+        color: var(--accent-color);
+    }
+    
+    footer {
+        background: linear-gradient(to right, var(--accent-color), var(--primary-color));
+        color: #fff;
+        text-align: center;
+        padding: 30px;
+        font-size: 14px;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.6;
+        z-index: 0;
+    }
+    
+    .contact-info {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        position: relative;
+        z-index: 1;
+    }
+    
+    .contact-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+        padding: 10px 20px;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+    }
+    
+    .contact-item svg {
+        margin-left: 15px;
+        fill: var(--secondary-color);
+    }
+    
+    .section-highlight {
+        background-color: rgba(255, 215, 0, 0.05);
+        border-right: 4px solid var(--secondary-color);
+        padding: 20px;
+        margin: 30px 0;
+        border-radius: 0 var(--border-radius) var(--border-radius) 0;
+    }
+    
+    .two-columns {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin: 30px 0;
+    }
+    
+    .highlight-box {
+        background: linear-gradient(135deg, rgba(0, 31, 63, 0.05), rgba(0, 51, 102, 0.05));
+        border-radius: var(--border-radius);
+        padding: 25px;
+        margin: 30px 0;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .highlight-box h3 {
+        color: var(--accent-color);
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+    }
+    
+    @media (max-width: 768px) {
+        .sponsorship-types {
+            grid-template-columns: 1fr;
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+        }
+        
+        .container {
+            margin: 15px;
+        }
+        
+        section {
+            padding: 25px;
+        }
+        
+        .countdown-item {
+            margin: 0 10px;
+            min-width: 60px;
+        }
+        
+        .countdown-value {
+            font-size: 1.8rem;
+        }
+        
+        .countdown-label {
+            font-size: 0.8rem;
+        }
+        
+        .schedule-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .time {
+            margin-bottom: 10px;
+            margin-left: 0;
+        }
+    }
+</style>
+        <div class="countdown-container">
+            <div class="countdown-item">
+                <div id="days" class="countdown-value">00</div>
+                <div class="countdown-label">يوم</div>
+            </div>
+            <div class="countdown-item">
+                <div id="hours" class="countdown-value">00</div>
+                <div class="countdown-label">ساعة</div>
+            </div>
+            <div class="countdown-item">
+                <div id="minutes" class="countdown-value">00</div>
+                <div class="countdown-label">دقيقة</div>
+            </div>
+            <div class="countdown-item">
+                <div id="seconds" class="countdown-value">00</div>
+                <div class="countdown-label">ثانية</div>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <h2>عن الحدث</h2>
+        <div class="section-highlight">
+            <p><strong>احتفالية ميديا أيدول 2025</strong> هي حدث إعلامي وفني مميز يُقام في القاهرة يوم 31 مايو 2025 بمناسبة عيد الفنانين والإعلاميين. يشارك في الحدث نخبة من الفنانين والإعلاميين والمؤثرين من مصر والعالم العربي، حيث سيتم تكريم المبدعين في مجالات الإعلام والفن والثقافة.</p>
+        </div>
+        
+        <div class="two-columns">
+            <div>
+                <p>تتضمن الاحتفالية عروضاً فنية، وندوات حوارية، وورش عمل، وحفل توزيع جوائز لأفضل الأعمال الإعلامية والفنية للعام. كما ستشهد الاحتفالية إطلاق مبادرات جديدة لدعم المواهب الشابة في المجال الإعلامي.</p>
+                <p>يعد هذا الحدث فرصة فريدة للتواصل مع صناع القرار في المجال الإعلامي والفني، وبناء علاقات مهنية قوية، والاطلاع على أحدث التوجهات والابتكارات في عالم الإعلام.</p>
+            </div>
+            <div>
+                <p><strong>Media Idol Celebration 2025</strong> is a unique media and arts event held in Cairo on May 31, 2025, in celebration of Artists and Media Professionals Day. The event will feature top celebrities, media professionals, and influencers from Egypt and the Arab world, honoring creative individuals in media, arts, and culture.</p>
+                <p>The celebration includes artistic performances, panel discussions, workshops, and an awards ceremony for the best media and artistic works of the year. The event will also launch new initiatives to support young talents in the media field.</p>
+            </div>
+        </div>
+
+        <h2>جدول الفعاليات</h2>
+        <div class="schedule">
+            <div class="schedule-item">
+                <div class="time">10:00 صباحاً</div>
+                <div class="event-details">
+                    <h4>افتتاح المعرض الإعلامي والفني</h4>
+                    <p>افتتاح رسمي للمعرض بحضور كبار الشخصيات والمسؤولين، مع جولة تعريفية في أجنحة العرض.</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">11:30 صباحاً</div>
+                <div class="event-details">
+                    <h4>ندوة "مستقبل الإعلام في العصر الرقمي"</h4>
+                    <p>يشارك فيها نخبة من الخبراء والمتخصصين لمناقشة التحديات والفرص في المشهد الإعلامي المتغير.</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">1:00 ظهراً</div>
+                <div class="event-details">
+                    <h4>استراحة غداء</h4>
+                    <p>بوفيه مفتوح للضيوف والمشاركين مع فرصة للتواصل وتبادل الخبرات.</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">2:30 عصراً</div>
+                <div class="event-details">
+                    <h4>ورش عمل متخصصة</h4>
+                    <p>سلسلة من ورش العمل المتوازية في مجالات الإعلام الرقمي، صناعة المحتوى، والإنتاج التلفزيوني.</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">5:00 مساءً</div>
+                <div class="event-details">
+                    <h4>عروض فنية متنوعة</h4>
+                    <p>مجموعة من العروض الفنية المميزة تقدمها نخبة من الفنانين والمواهب الشابة.</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">7:00 مساءً</div>
+                <div class="event-details">
+                    <h4>حفل توزيع جوائز Media Idol</h4>
+                    <p>حفل رسمي لتكريم المتميزين في مجالات الإعلام والفن والثقافة، مع عروض فنية مصاحبة.</p>
+                </div>
+            </div>
+            <div class="schedule-item">
+                <div class="time">9:00 مساءً</div>
+                <div class="event-details">
+                    <h4>حفل ختامي وعشاء</h4>
+                    <p>عشاء فاخر للمشاركين والرعاة مع فرص للتواصل وبناء العلاقات في أجواء احتفالية.</p>
+                </div>
+            </div>
+        </div>
+
+        <h2>أنواع الرعاية</h2>
+        <div class="sponsorship-types">
+            <div class="sponsorship-card">
+                <h3>راعي بلاتيني</h3>
+                <div class="price">50,000 دولار</div>
+                <ul class="benefits">
+                    <li>شعار الشركة في جميع المواد الإعلانية</li>
+                    <li>كلمة في حفل الافتتاح (5 دقائق)</li>
+                    <li>جناح عرض رئيسي (50 متر مربع)</li>
+                    <li>10 تذاكر VIP للحفل الختامي</li>
+                    <li>تغطية إعلامية شاملة</li>
+                    <li>حصرية في مجال عمل الشركة</li>
+                    <li>مقابلات حصرية مع وسائل الإعلام</li>
+                    <li>إعلان فيديو خلال الحفل (60 ثانية)</li>
+                </ul>
+            </div>
+            <div class="sponsorship-card">
+                <h3>راعي ذهبي</h3>
+                <div class="price">30,000 دولار</div>
+                <ul class="benefits">
+                    <li>شعار الشركة في المواد الإعلانية</li>
+                    <li>جناح عرض مميز (30 متر مربع)</li>
+                    <li>6 تذاكر VIP للحفل الختامي</li>
+                    <li>تغطية إعلامية واسعة</li>
+                    <li>مشاركة في إحدى الندوات</li>
+                    <li>إعلان فيديو خلال الحفل (30 ثانية)</li>
+                </ul>
+            </div>
+            <div class="sponsorship-card">
+                <h3>راعي فضي</h3>
+                <div class="price">15,000 دولار</div>
+                <ul class="benefits">
+                    <li>شعار الشركة في بعض المواد الإعلانية</li>
+                    <li>جناح عرض (20 متر مربع)</li>
+                    <li>4 تذاكر VIP للحفل الختامي</li>
+                    <li>تغطية إعلامية</li>
+                    <li>عرض مواد ترويجية خلال الحدث</li>
+                </ul>
+            </div>
+            <div class="sponsorship-card">
+                <h3>راعي برونزي</h3>
+                <div class="price">7,500 دولار</div>
+                <ul class="benefits">
+                    <li>ذكر اسم الشركة في المواد الإعلانية</li>
+                    <li>مساحة عرض صغيرة (10 متر مربع)</li>
+                    <li>2 تذكرة VIP للحفل الختامي</li>
+                    <li>توزيع مواد ترويجية للحضور</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2>لماذا تشارك؟</h2>
+        <div class="highlight-box">
+            <h3>فرص استثنائية للشركات والعلامات التجارية</h3>
+            <div class="two-columns">
+                <div>
+                    <ul>
+                        <li>الظهور الإعلامي المميز أمام جمهور واسع من المهتمين بالإعلام والفن.</li>
+                        <li>التفاعل المباشر مع نخبة من صناع القرار والمؤثرين في المجال الإعلامي.</li>
+                        <li>بناء علاقات تجارية جديدة مع شركاء محتملين من مختلف القطاعات.</li>
+                        <li>تعزيز صورة العلامة التجارية كداعم للثقافة والإبداع في مصر والعالم العربي.</li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li>فرص تسويقية فريدة من خلال التغطية الإعلامية الواسعة للحدث.</li>
+                        <li>الوصول إلى شريحة مستهدفة من المهتمين بالإعلام والفن والثقافة.</li>
+                        <li>المشاركة في إطلاق مبادرات إبداعية تعزز المسؤولية الاجتماعية للشركة.</li>
+                        <li>فرصة لعرض منتجات وخدمات الشركة أمام جمهور نوعي ومؤثر.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <p>Media Idol Celebration 2025 offers exceptional opportunities for companies and brands:</p>
+        <ul>
+            <li>Premium media exposure to a wide audience interested in media and arts.</li>
+            <li>Direct interaction with elite decision-makers and influencers in the media field.</li>
+            <li>Building new business relationships with potential partners from various sectors.</li>
+            <li>Enhancing brand image as a supporter of culture and creativity in Egypt and the Arab world.</li>
+            <li>Unique marketing opportunities through extensive media coverage of the event.</li>
+            <li>Access to a targeted segment of media, arts, and culture enthusiasts.</li>
+            <li>Participation in creative initiatives that enhance the company's social responsibility.</li>
+            <li>Opportunity to showcase company products and services to a qualitative and influential audience.</li>
+        </ul>
+
+        <div style="text-align: center; margin: 40px 0;">
+            <a class="btn" href="#register">سجّل الآن / Register Now</a>
+        </div>
+    </section>
+
+    <section id="register">
+        <h2>نموذج تسجيل الشركات الراعية</h2>
+        <div class="success-message" id="success-message">
+            تم إرسال بياناتك بنجاح! سيتواصل معك فريقنا قريباً.
+        </div>
+        <div class="error-message" id="error-message">
+            حدث خطأ أثناء إرسال البيانات. يرجى المحاولة مرة أخرى.
+        </div>
+        <form id="sponsorForm">
+            <div class="form-group">
+                <label for="company">اسم الشركة / Company Name:</label>
+                <input type="text" id="company" name="company" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="person">اسم المسؤول / Contact Person:</label>
+                <input type="text" id="person" name="person" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="position">المنصب / Position:</label>
+                <input type="text" id="position" name="position" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">رقم الموبايل / Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني / Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="sponsorship">نوع الرعاية / Sponsorship Type:</label>
+                <select id="sponsorship" name="sponsorship" required>
+                    <option value="">-- اختر نوع الرعاية --</option>
+                    <option value="بلاتيني / Platinum">بلاتيني / Platinum</option>
+                    <option value="ذهبي / Gold">ذهبي / Gold</option>
+                    <option value="فضي / Silver">فضي / Silver</option>
+                    <option value="برونزي / Bronze">برونزي / Bronze</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="industry">مجال عمل الشركة / Industry:</label>
+                <input type="text" id="industry" name="industry" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="notes">ملاحظات / Notes:</label>
+                <textarea id="notes" name="notes" rows="4"></textarea>
+            </div>
+            
+            <button type="submit" class="btn" id="submitBtn">إرسال / Submit</button>
+        </form>
+    </section>
+    
+    <section>
+        <h2>تواصل معنا</h2>
+        <div class="contact-info">
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12 2c3.31 0 6 2.69 6 6 0 3.22-2.61 7.01-6 11.47-3.39-4.46-6-8.25-6-11.47 0-3.31 2.69-6 6-6zm0 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/>
+                </svg>
+                <span>القاهرة، مصر - فندق الماسة</span>
+            </div>
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <span>info@mediaidol2025.com</span>
+            </div>
+            <div class="contact-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM12 3v10l3-3h6V3h-9z"/>
+                </svg>
+                <span>+20 123 456 7890</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Media Idol. جميع الحقوق محفوظة.</p>
+    </footer>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Countdown Timer - Fixed to be accurate
+        const eventDate = new Date("May 31, 2025 10:00:00").getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const timeRemaining = eventDate - now;
+            
+            if (timeRemaining <= 0) {
+                // Event has passed
+                document.getElementById("days").innerHTML = "00";
+                document.getElementById("hours").innerHTML = "00";
+                document.getElementById("minutes").innerHTML = "00";
+                document.getElementById("seconds").innerHTML = "00";
+                return;
+            }
+            
+            // Calculate time units precisely
+            const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+            
+            // Update the countdown display with padded zeros
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+        }
+        
+        // Initial update
+        updateCountdown();
+        
+        // Update every second
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        
+        // Form Submission
+        const form = document.getElementById('sponsorForm');
+        const successMessage = document.getElementById('success-message');
+        const errorMessage = document.getElementById('error-message');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'جاري الإرسال...';
+            
+            // Collect form data
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Add timestamp
+            data['timestamp'] = new Date().toISOString();
+            
+            // Send data to Google Sheets
+            fetch('https://script.google.com/macros/s/AKfycby4FuYcqGAqiBTruY8uAwThhuKgK0q2hEK-UoXANkPYWKNnmdRJfu2dP0jokUm6M_qvwQ/exec', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'no-cors'
+            })
+            .then(response => {
+                // Since we're using no-cors, we can't actually read the response
+                // So we'll just assume success after a delay
+                setTimeout(() => {
+                    successMessage.style.display = 'block';
+                    form.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'إرسال / Submit';
+                    
+                    // Scroll to success message
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    
+                    // Hide success message after 5 seconds
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                }, 1500);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                errorMessage.style.display = 'block';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'إرسال / Submit';
+                
+                // Scroll to error message
+                errorMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Hide error message after 5 seconds
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    });
+</script>
